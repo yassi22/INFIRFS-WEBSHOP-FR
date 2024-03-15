@@ -1,0 +1,10 @@
+<p>Shopping cart</p>
+
+@for (product of productsInCart; track $index){
+    {{product.name}} <br/> 
+
+    <button (click)="removeProductFromCart($index)"> </button>
+}
+ 
+ 
+

@@ -1,35 +1,58 @@
-import { Injectable } from '@angular/core'; 
-import { Product } from '../models/product.model';
+import { Injectable, OnInit } from '@angular/core';
+
 import { BehaviorSubject } from 'rxjs';
+
+import { Product } from '../models/product.model';
+
+const localStorageKey: string = "products-in-cart"
 
 @Injectable({
   providedIn: 'root'
 })
-export class CartService { 
-
+export class CartService {
   private productsInCart: Product[] = [];
-  public $productsInCart : BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([]); 
+  public $productInCart: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([]);
 
-  public getProductInCart(): Product[]{ 
-      return this.productsInCart.slice();
-
-  } 
-   
-  public addProductToCart(product: Product):void{  
-    
-      this.productsInCart.push(product);  
-      this.$productsInCart.next(this.productsInCart.slice())
-      console.log('Products in cart'); 
-      console.log(this.productsInCart);  
-    
+  constructor() {
+    this.loadProductsFromLocalStorage();
   }
 
-  constructor() { } 
-
-  public removeProductFromCart(products_index: number){ 
-    this.productsInCart.splice(products_index, 1); 
-    this.$productsInCart.next(this.productsInCart.slice());
+  public addProductToCart(product: Product) {
+    this.productsInCart.push(product);
+    this.saveProductsAndNotifyChange();
   }
- 
+
+  public removeProductFromCart(product_index: number) {
+    this.productsInCart.splice(product_index, 1);
+    this.saveProductsAndNotifyChange();
+  }
+
+  public allProductsInCart(): Product[] {
+    return this.productsInCart.slice();
+  }
+
+  // ------------ PRIVATE ------------------
+
+  private saveProductsAndNotifyChange(): void {
+    this.saveProductsToLocalStorage(this.productsInCart.slice());
+    this.$productInCart.next(this.productsInCart.slice());
+  }
+
+  private saveProductsToLocalStorage(products: Product[]): void {
+    localStorage.setItem(localStorageKey, JSON.stringify(products))
+  }
+
+  private loadProductsFromLocalStorage(): void {
+    let productsOrNull = localStorage.getItem(localStorageKey)
+    if (productsOrNull != null) {
+
+      // Parse the JSON string to a Product list
+      let products: Product[] = JSON.parse(productsOrNull)
+
+      // Assign the products to the productsInCart attribute and notify our subscribers
+      this.productsInCart = products
+      this.$productInCart.next(this.productsInCart.slice());
+    }
+  }
 
 }

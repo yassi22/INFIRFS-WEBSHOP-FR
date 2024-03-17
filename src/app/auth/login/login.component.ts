@@ -1,34 +1,37 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
+import { Component,  OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../auth.service';
+import { AuthRequest } from '../auth-request.model';
+import { AuthResponse } from '../auth-response.model';
+import { Router } from '@angular/router';
 
 
 @Component({
   selector: 'app-login',
-  standalone: true,
-  imports: [FormsModule, ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{ 
+
   public loginForm: FormGroup; 
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService){ 
-    this.loginForm = this.formBuilder.group({
-        email: [''],
-        password: ['']
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router){}
 
-    })
+  ngOnInit(): void {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.email, Validators.required, Validators.maxLength(64), Validators.minLength(5)]],
+      password: ['', [Validators.minLength(8), Validators.maxLength(128)]]
+    });
+  } 
+
+  public onSubmit(): void{
+    this.authService
+      .login(this.loginForm.value)
+      .subscribe((authReponse: AuthResponse) => {
+        console.log('AuthResponse: ', authReponse);
+        this.router.navigate(['']);
+      });
   }
-
-public onSubmit(){   
-  console.log("test")
-  this.authService.login(this.loginForm.value).subscribe((loginResponse: {"email" : string, "token": string}) => {
-    console.log("LoginResponse", loginResponse); 
-    localStorage.setItem('auth_token', loginResponse.token)
-  });
-  
-}
 
 
 }

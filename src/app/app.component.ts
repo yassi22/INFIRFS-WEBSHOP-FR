@@ -1,17 +1,16 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-
 import { NavigationComponent } from './navigation/navigation.component';
-import { ProductIndexComponent } from './product/product-index/product-index.component';
-import { LoginComponent } from './auth/login/login.component';
+import { ProductsModule } from './products/products.module';
+import { AuthModule } from './auth/auth.module';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavigationComponent, ProductIndexComponent],
+  imports: [CommonModule, RouterOutlet, ProductsModule, AuthModule, NavigationComponent], // Hier dus de module toevoegen
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'bol-com-webshop';
 }

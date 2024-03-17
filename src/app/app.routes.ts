@@ -1,26 +1,29 @@
 import { Routes } from '@angular/router';
-import { ProductIndexComponent } from './product/product-index/product-index.component';
+
 import { CartComponent } from './cart/cart.component';
-import { authGuard } from './auth/auth.guard';
-import { ProductDetailComponent } from './product/product-detail/product-detail.component';
-import { ProductShowComponent } from './product/product-show/product-show.component';
 import { HomeComponent } from './home/home.component';
+import { ProductsComponent } from './products/products.component';
+import { authGuard } from './auth/auth.guard';
 import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { UnprotectedComponent } from './unprotected/unprotected.component';
+import { ProtectedComponent } from './protected/protected.component';
 
-export const routes: Routes = [ 
 
-    {path: '', component: HomeComponent},
-
-    {path: 'products', component: ProductIndexComponent, children: [ 
-        {path: '', component:ProductIndexComponent},
-        {path: ':id', component: ProductShowComponent}
-    ]}, 
-
-    {path: 'cart', component: CartComponent, canActivate: [authGuard]} , 
-    
-    {path: 'auth', children: [{ path: 'login', component:LoginComponent}]}
-    // register path toevoegen 
-    // log out path toevoegen 
-
-    
+export const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'products', component: ProductsComponent }, 
+  {path: 'auth/login', component: LoginComponent }, 
+  {path: 'auth/register', component: RegisterComponent}, 
+  {path: 'unprotected', component: UnprotectedComponent }, 
+  {path: 'protected', component: ProtectedComponent, canActivate: [authGuard] },
+  // { path: 'categories', component: CategoriesComponent, canActivate: [authGuard] },
+  { path: 'cart', component: CartComponent },
+  // {
+  //   path: 'auth', children: [
+  //     { path: 'login', component: LoginComponent },
+  //     // { path: 'register', component: RegisterComponent }
+  //     // { path: 'logout', }
+  //   ]
+  // }
 ];

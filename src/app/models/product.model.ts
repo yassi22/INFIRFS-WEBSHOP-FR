@@ -1,14 +1,13 @@
+// import { Category } from "./category.model";
+
 export class Product {
-  public name: string
-  public price: number
-  public category: string 
+  public id: number;
+  public title: string;
+  public description: string; 
+  public developer :string;
+  public releaseDate : string;
+  public price: number;
+  // public category: Category;
+} 
 
-  constructor(name:string, price:number, category:string){ 
-      this.name = name; 
-      this.price = price; 
-      this.category = category;
-  } 
 
-  
-
-}

@@ -1,23 +1,34 @@
- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">webshop name</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-brand mb-0 h1">{{title}}</span>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item"> 
-            <a class="nav-link active" [routerLink]="['/']" >Home</a> 
-        </li> 
-        <li class="nav-item"> 
-          <a class="nav-link active" [routerLink]="['/products']" >Products</a> 
-      </li>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
         <li class="nav-item">
-            <a class="nav-link active" [routerLink]="['/', 'cart']" >Cart</a>
+          <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}"
+            routerLink="/">Home</a>
         </li>
-       
+        <li class="nav-item">
+          <a class="nav-link" [routerLinkActive]="['active']" routerLink="/products">Products</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" [routerLinkActive]="['active']" routerLink="/categories">Categories</a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" [routerLinkActive]="['active']" routerLink="/cart">Cart ({{amountOfProducts}}) </a>
+        </li> 
+
+        <li class="nav-item"><a [routerLinkActive]="['active']" [routerLink]="['auth', 'login']" *ngIf="!userIsLoggedIn" class="nav-link">Login</a></li>
+        <li class="nav-item"><a [routerLinkActive]="['active']" [routerLink]="['auth', 'register']" *ngIf="!userIsLoggedIn" class="nav-link">Register</a></li>
+        <li class="nav-item"><a (click)="onLogout()" class="nav-link" *ngIf="userIsLoggedIn">Log out</a></li>            
+            <li class="nav-item"><a [routerLinkActive]="['active']" [routerLink]="['unprotected']" class="nav-link">Unprotected route</a></li>
+            <li class="nav-item"><a [routerLinkActive]="['active']" [routerLink]="['protected']" class="nav-link">Protected route</a></li>       
+
       </ul>
- 
     </div>
   </div>
 </nav>

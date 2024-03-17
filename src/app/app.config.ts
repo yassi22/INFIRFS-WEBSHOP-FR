@@ -1,11 +1,15 @@
-import { ApplicationConfig, importProvidersFrom } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { ApplicationConfig, DEFAULT_CURRENCY_CODE, importProvidersFrom } from '@angular/core';
+import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideRouter } from '@angular/router'; 
+import { authInterceptor } from './auth/auth.interceptor copy';
 
 import { routes } from './app.routes';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes),  importProvidersFrom(HttpClientModule)] 
-  // {provide: HTTP_INTERCEPTOR}
-
+  providers: [
+    { provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR' },
+    provideRouter(routes),
+    importProvidersFrom(HttpClientModule), 
+    provideHttpClient(withInterceptors([authInterceptor]))
+  ]
 };

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProductIndexComponent } from './product-index.component';
+import { UnprotectedComponent } from './unprotected.component';
 
-describe('ProductIndexComponent', () => {
-  let component: ProductIndexComponent;
-  let fixture: ComponentFixture<ProductIndexComponent>;
+describe('UnprotectedComponent', () => {
+  let component: UnprotectedComponent;
+  let fixture: ComponentFixture<UnprotectedComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ProductIndexComponent]
+      imports: [UnprotectedComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(ProductIndexComponent);
+    fixture = TestBed.createComponent(UnprotectedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -24,9 +24,9 @@
 
         <li class="nav-item"><a [routerLinkActive]="['active']" [routerLink]="['auth', 'login']" *ngIf="!userIsLoggedIn" class="nav-link">Login</a></li>
         <li class="nav-item"><a [routerLinkActive]="['active']" [routerLink]="['auth', 'register']" *ngIf="!userIsLoggedIn" class="nav-link">Register</a></li>
+        <li class="nav-item"><a [routerLinkActive]="['active']" routerLink="/account" *ngIf="userIsLoggedIn" class="nav-link">Account</a></li>
         <li class="nav-item"><a (click)="onLogout()" class="nav-link" *ngIf="userIsLoggedIn">Log out</a></li>            
-            <li class="nav-item"><a [routerLinkActive]="['active']" [routerLink]="['unprotected']" class="nav-link">Unprotected route</a></li>
-            <li class="nav-item"><a [routerLinkActive]="['active']" [routerLink]="['protected']" class="nav-link">Protected route</a></li>       
+         
 
       </ul>
     </div>

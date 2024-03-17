@@ -50,9 +50,14 @@ export class CartComponent implements OnInit {
 
     const order =  new Order(product_ids, user_email);   
     this.productService.sendOrders(order);
-
+    
+    if(order == null){ 
+      this.products_in_cart = this.cartService.allProductsInCart();  
+    } else { 
+      this.products_in_cart = [];
+    }
   
-  }
+  } 
 
 
 

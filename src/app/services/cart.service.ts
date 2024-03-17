@@ -3,6 +3,7 @@ import { Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 import { Product } from '../models/product.model';
+import { Order } from '../models/order.model';
 
 const localStorageKey: string = "products-in-cart"
 
@@ -30,6 +31,7 @@ export class CartService {
   public allProductsInCart(): Product[] {
     return this.productsInCart.slice();
   }
+ 
 
   // ------------ PRIVATE ------------------
 

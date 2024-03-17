@@ -8,13 +8,17 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { UnprotectedComponent } from './unprotected/unprotected.component';
 import { ProtectedComponent } from './protected/protected.component';
+import { OrderComponent } from './order/order.component'; 
+import { AccountComponent } from './account/account.component';
 
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'products', component: ProductsComponent }, 
+  { path: 'products', component: ProductsComponent },  
+  { path: 'order', component: OrderComponent}, 
+  {path: 'account', component: AccountComponent},
   {path: 'auth/login', component: LoginComponent }, 
-  {path: 'auth/register', component: RegisterComponent}, 
+  {path: 'auth/register', component: RegisterComponent},  
   {path: 'unprotected', component: UnprotectedComponent }, 
   {path: 'protected', component: ProtectedComponent, canActivate: [authGuard] },
   // { path: 'categories', component: CategoriesComponent, canActivate: [authGuard] },

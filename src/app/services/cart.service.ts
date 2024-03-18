@@ -21,6 +21,11 @@ export class CartService {
   public addProductToCart(product: Product) {
     this.productsInCart.push(product);
     this.saveProductsAndNotifyChange();
+  } 
+
+  public emptyProductsCart(){ 
+    this.productsInCart = []; 
+    this.saveProductsAndNotifyChange();
   }
 
   public removeProductFromCart(product_index: number) {

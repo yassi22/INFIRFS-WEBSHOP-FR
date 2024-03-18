@@ -1,1 +1,10 @@
 <p>order works!</p>
+
+@if (loadingOrders){
+    <p>Loading orders...</p>
+    } @else {
+    @for (order of orders; track $index){
+        {{order}}
+ }
+    }
+    

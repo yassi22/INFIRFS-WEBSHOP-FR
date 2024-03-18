@@ -5,7 +5,8 @@ import { CartService } from '../services/cart.service';
 import { Product } from '../models/product.model'; 
 import { TokenService } from '../auth/token.service';
 import { Order } from '../models/order.model'; 
-import { ProductsService } from '../services/products.service';
+import { ProductsService } from '../services/products.service'; 
+
 
 
 @Component({
@@ -49,13 +50,15 @@ export class CartComponent implements OnInit {
     })
 
     const order =  new Order(product_ids, user_email);   
-    this.productService.sendOrders(order);
+    this.productService.sendOrders(order); 
+    this.cartService.emptyProductsCart();
     
-    if(order == null){ 
-      this.products_in_cart = this.cartService.allProductsInCart();  
-    } else { 
-      this.products_in_cart = [];
-    }
+    // if(order == null){ 
+    //   this.products_in_cart = this.cartService.allProductsInCart();  
+    // } else { 
+    //   this.products_in_cart = [];
+    //   this.saveProductsAndNotifyChange();
+    // }
   
   } 
 

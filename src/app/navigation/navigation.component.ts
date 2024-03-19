@@ -16,7 +16,7 @@ import { CommonModule } from '@angular/common';
 
 
 export class NavigationComponent implements OnInit {
-  public title: string = 'INFIRFS - Webshop'; 
+  public title: string = 'MASH GAMES'; 
 
   public userIsLoggedIn: boolean = false;
 

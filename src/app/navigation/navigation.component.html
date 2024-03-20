@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-light">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <div class="container-fluid">
     <span class="navbar-brand mb-0 h1">{{title}}</span>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -8,43 +8,45 @@
 
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item">
+        <li class="nav-item  ">
           <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}"
             routerLink="/">Home</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item  ">
           <a class="nav-link" [routerLinkActive]="['active']" routerLink="/products">Products</a>
         </li>
         <!-- <li class="nav-item">
           <a class="nav-link" [routerLinkActive]="['active']" routerLink="/categories">Categories</a>
         </li> -->
-        <li class="nav-item">
+        <li class="nav-item  ">
           <a class="nav-link" [routerLinkActive]="['active']" routerLink="/cart">Cart ({{amountOfProducts}}) </a>
         </li>  
         
-  
-        <li class="nav-item">
-          <a class="nav-link" (click)="languageService.setLanguage('NL') " *ngIf="languageService.language == 'NL'"> <button type="button" *ngIf="languageService.language == 'NL'" class="btn btn-primary">NL</button> </a> 
-          <a class="nav-link" (click)="languageService.setLanguage('NL')" *ngIf="languageService.language == 'EN'"> <button type="button" *ngIf="languageService.language == 'EN'"  class="btn btn-secondary">NL</button> </a>
-        </li>   
- 
-        <li class="nav-item">
-          <a class="nav-link" (click)="languageService.setLanguage('EN') " *ngIf="languageService.language == 'EN'"> <button type="button" *ngIf="languageService.language == 'EN'" class="btn btn-primary">EN</button> </a> 
-          <a class="nav-link" (click)="languageService.setLanguage('EN')" *ngIf="languageService.language == 'NL'"> <button type="button" *ngIf="languageService.language == 'NL'"  class="btn btn-secondary">EN</button> </a>
-        </li>   
+        <li class="nav-item "><a [routerLinkActive]="['active']" [routerLink]="['auth', 'login']" *ngIf="!userIsLoggedIn && languageService.language == 'EN' " class="nav-link">Login</a></li> 
+        <li class="nav-item  "><a [routerLinkActive]="['active']" [routerLink]="['auth', 'login']" *ngIf="!userIsLoggedIn && languageService.language == 'NL' " class="nav-link">Inloggen</a></li>  
 
- 
+
+        <li class="nav-item   "><a [routerLinkActive]="['active']" [routerLink]="['auth', 'register']" *ngIf="!userIsLoggedIn" class="nav-link">Register</a ></li> 
+
         
-        <li class="nav-item"><a [routerLinkActive]="['active']" [routerLink]="['auth', 'login']" *ngIf="!userIsLoggedIn && languageService.language == 'EN' " class="nav-link">Login</a></li> 
-        <li class="nav-item"><a [routerLinkActive]="['active']" [routerLink]="['auth', 'login']" *ngIf="!userIsLoggedIn && languageService.language == 'NL' " class="nav-link">Inloggen</a></li> 
+        <li class="nav-item "><a [routerLinkActive]="['active']" routerLink="/account" *ngIf="userIsLoggedIn" class="nav-link">Account</a></li> 
+        <li class="nav-item  "><a [routerLinkActive]="['active']" routerLink="/order" *ngIf="userIsLoggedIn" class="nav-link">My Orders</a></li>
+        <li class="nav-item "><a (click)="onLogout()" [routerLinkActive]="['active']" class="nav-link" *ngIf="userIsLoggedIn">Log out</a></li>             
 
-        <li class="nav-item"><a [routerLinkActive]="['active']" [routerLink]="['auth', 'register']" *ngIf="!userIsLoggedIn" class="nav-link">Register</a ></li>
-        <li class="nav-item"><a [routerLinkActive]="['active']" routerLink="/account" *ngIf="userIsLoggedIn" class="nav-link">Account</a></li> 
-        <li class="nav-item"><a [routerLinkActive]="['active']" routerLink="/order" *ngIf="userIsLoggedIn" class="nav-link">My Orders</a></li>
-        <li class="nav-item"><a (click)="onLogout()" [routerLinkActive]="['active']" class="nav-link" *ngIf="userIsLoggedIn">Log out</a></li>            
-         
+
+        
+        <li class="nav-item">
+          <a class="nav-link" (click)="languageService.setLanguage('NL') " *ngIf="languageService.language == 'NL'"> <button type="button" *ngIf="languageService.language == 'NL'" class=" btn btn-primary btn-sm">NL</button> </a> 
+          <a class="nav-link" (click)="languageService.setLanguage('NL')" *ngIf="languageService.language == 'EN'"> <button type="button" *ngIf="languageService.language == 'EN'"  class="btn btn-secondary btn-sm">NL</button> </a>
+        </li>   
+ 
+        <li class="nav-item">
+          <a class="nav-link" (click)="languageService.setLanguage('EN') " *ngIf="languageService.language == 'EN'"> <button type="button" *ngIf="languageService.language == 'EN'" class="btn btn-primary btn-sm">EN</button> </a> 
+          <a class="nav-link" (click)="languageService.setLanguage('EN')" *ngIf="languageService.language == 'NL'"> <button type="button" *ngIf="languageService.language == 'NL'"  class="btn btn-secondary btn-sm">EN</button> </a>
+        </li>   
 
       </ul>
     </div>
   </div>
 </nav>
+

@@ -27,13 +27,14 @@
           </div>
         </div>
       </div>  
-      }   
-      <p>{{totalPrice()}}</p>
+      }    
+      <h4>Totaal Prijs:</h4>
+      <h5 class="mb-0">{{totalPrice()}}</h5>
+      <br>
 
+        <button class="btn btn-primary" *ngIf="!userIsLoggedIn" disabled> Bestellen </button>  
 
-        <button class="btn-primary" *ngIf="!userIsLoggedIn" disabled> Bestellen </button>  
-
-        <button class="btn-primary" (click)="sendOrders()" *ngIf="userIsLoggedIn"> Bestellen </button> 
+        <button class="btn btn-primary" (click)="sendOrders()" *ngIf="userIsLoggedIn"> Bestellen </button> 
 
 
     </div>

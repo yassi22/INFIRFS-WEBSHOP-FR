@@ -3,6 +3,7 @@
 export class Product {
   public id: number;
   public title: string;
+  public imageurl: string;
   public description: string; 
   public developer :string;
   public releaseDate : string;

@@ -4,7 +4,8 @@ import { AuthService } from '../auth/auth.service';
 import { CartService } from '../services/cart.service';
 import { Product } from '../models/product.model';
 import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common'; 
+import { LanguageService } from '../services/language.service';
 
 @Component({
   selector: 'app-navigation',
@@ -23,7 +24,7 @@ export class NavigationComponent implements OnInit {
 
   public amountOfProducts: number = 0;
 
-  constructor(private cartService: CartService, private authService: AuthService, private router: Router) { }
+  constructor(private cartService: CartService, private authService: AuthService, private router: Router, public languageService : LanguageService) { }
 
   ngOnInit() {
     this.cartService.$productInCart.subscribe((products: Product[]) => {

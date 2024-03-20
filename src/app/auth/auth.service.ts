@@ -11,7 +11,7 @@ import { TokenService } from './token.service';
 export class AuthService {
 
   private _loginEndpoint: string = 'http://localhost:8080/api/auth/login';
-  private _registerEndpoint: string = 'http://localhost:8080/api/auth/login';
+  private _registerEndpoint: string = 'http://localhost:8080/api/auth/register';
   
   public $userIsLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 

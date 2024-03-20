@@ -10,12 +10,15 @@ import { UnprotectedComponent } from './unprotected/unprotected.component';
 import { ProtectedComponent } from './protected/protected.component';
 import { OrderComponent } from './order/order.component'; 
 import { AccountComponent } from './account/account.component';
+import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'products', component: ProductsComponent },  
-  { path: 'order', component: OrderComponent}, 
+  { path: 'products', component: ProductsComponent},
+  
+  {path: 'products/:id', component:ProductDetailComponent},
+  {path: 'order', component: OrderComponent}, 
   {path: 'account', component: AccountComponent},
   {path: 'auth/login', component: LoginComponent }, 
   {path: 'auth/register', component: RegisterComponent},  

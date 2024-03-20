@@ -17,11 +17,12 @@ export class ProductsService {
 
   private baseUrl: string = environment.base_url + "/game";
 
-  constructor(private http: HttpClient, private tokeService: TokenService) { }
+  constructor(private http: HttpClient, private tokenService: TokenService) { }
 
   public getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.baseUrl);
-  }
+  } 
+
 
   public addProduct(product: Product): Observable<Product> {
     return this.http.post<Product>(this.baseUrl, product);

@@ -38,7 +38,20 @@ export class CartComponent implements OnInit {
 
    
 
-  }  
+  }   
+
+
+  public totalPrice():number{ 
+    
+    let totalProductPrice: number = 0; 
+    this.products_in_cart.forEach( product =>{ 
+      totalProductPrice += product.price; 
+      
+
+    })
+    return totalProductPrice; 
+
+  }
 
   public sendOrders():void {  
     let user_email = this.tokenService.getEmail(); 

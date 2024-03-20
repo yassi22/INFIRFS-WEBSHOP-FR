@@ -21,7 +21,18 @@ export class CartService {
   public addProductToCart(product: Product) {
     this.productsInCart.push(product);
     this.saveProductsAndNotifyChange();
-  } 
+  }  
+
+  public totalPrice():number{ 
+    
+    let totalProductPrice: number = 0; 
+    this.productsInCart.forEach( product =>{ 
+      totalProductPrice += product.price; 
+    
+    })
+    return totalProductPrice; 
+
+  }
 
   public emptyProductsCart(){ 
     this.productsInCart = []; 

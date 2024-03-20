@@ -42,7 +42,22 @@ export class TokenService {
 
  
 
+  } 
+
+  public getUserId():number{ 
+    
+    const token = this.loadToken(); 
+    if(token != null){ 
+      const checkedToken : string = token!;  
+      const userId = this.getPayload(checkedToken).userId;  
+      return userId; 
+    } else {  
+      //error message toevoegen
+      return  0; 
+    }
+
   }
+
 
   public removeToken(){
     localStorage.removeItem(this._localStorageTokenKey);

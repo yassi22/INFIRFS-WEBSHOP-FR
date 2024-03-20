@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { Order } from '../models/order.model'; 
+import {Order } from '../models/order.model'; 
 import { OrderService } from '../services/order.service'; 
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router'; 
+import { GetOrder } from '../models/getorder.model';
 
 @Component({
   selector: 'app-order',
@@ -11,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './order.component.scss'
 })
 export class OrderComponent {
-  public orders: Order[] = new Array<Order>();
+  public orders: GetOrder[] = new Array<GetOrder>();
   public loadingOrders: boolean = true;
   public user_email : String; 
  
@@ -26,7 +27,7 @@ ngOnInit(): void {
 
   this.OrderService
     .getOrders()
-    .subscribe((orders: Order[]) => {
+    .subscribe((orders: GetOrder[]) => {
       this.loadingOrders = false;
       this.orders = orders;
     });

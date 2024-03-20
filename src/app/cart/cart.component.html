@@ -5,12 +5,13 @@
         <h3 class="fw-normal mb-0 text-black">Shopping Cart</h3>
       </div>
       @for (product of products_in_cart; track $index){
+       
       <div class="card rounded-3 mb-4">
         <div class="card-body p-4">
           <div class="row d-flex justify-content-between align-items-center">
             <div class="col-md-2 col-lg-2 col-xl-2">
-              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
-                class="img-fluid rounded-3" alt="Cotton T-shirt">
+              <img src={{product.imageurl}}
+                class="img-fluid rounded-3" alt="Cotton T-shirt"/>
             </div>
             <div class="col-md-3 col-lg-3 col-xl-3">
               <p class="lead fw-normal mb-2">{{product.title}}</p>
@@ -26,7 +27,8 @@
           </div>
         </div>
       </div>  
-      } 
+      }   
+      <p>{{totalPrice()}}</p>
 
 
         <button class="btn-primary" *ngIf="!userIsLoggedIn" disabled> Bestellen </button>  

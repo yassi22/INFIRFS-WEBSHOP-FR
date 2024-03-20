@@ -2,7 +2,8 @@
   <div class="row d-flex justify-content-center">
     <div class="col-xl-11">
       <div class="d-flex justify-content-between align-items-center mb-4">
-        <h3 class="fw-normal mb-0 text-black">Shopping Cart</h3>
+        <h3 class="fw-normal mb-0 text-black"  *ngIf="languageService.language == 'EN'" >Shopping Cart</h3> 
+        <h3 class="fw-normal mb-0 text-black"  *ngIf="languageService.language == 'NL'" >Winkelmand</h3>
       </div>
       @for (product of products_in_cart; track $index){
        
@@ -20,21 +21,23 @@
               <h5 class="mb-0">{{product.price | currency }}</h5>
             </div>
             <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-              <a (click)="removeProductFromCart($index)" class="text-danger">
-                Delete
-              </a>
+              <a (click)="removeProductFromCart($index)" class="text-danger" *ngIf="languageService.language == 'EN'" >Delete</a> 
+              <a (click)="removeProductFromCart($index)" class="text-danger" *ngIf="languageService.language == 'NL'" >Verwijder</a>
             </div>
           </div>
         </div>
       </div>  
       }    
-      <h4>Totaal Prijs:</h4>
-      <h5 class="mb-0">{{totalPrice()}}</h5>
+      <h4  *ngIf="languageService.language == 'NL'">Totaal Prijs:</h4> 
+      <h4  *ngIf="languageService.language == 'EN'">Total Price:</h4>
+      <h5 class="mb-0" >{{totalPrice() | currency}}</h5>
       <br>
 
-        <button class="btn btn-primary" *ngIf="!userIsLoggedIn" disabled> Bestellen </button>  
+        <button class="btn btn-primary" *ngIf="!userIsLoggedIn &&  languageService.language == 'EN' " disabled> Order </button>  
+        <button class="btn btn-primary" *ngIf="!userIsLoggedIn &&  languageService.language == 'NL' " disabled> Bestellen </button>  
 
-        <button class="btn btn-primary" (click)="sendOrders()" *ngIf="userIsLoggedIn"> Bestellen </button> 
+        <button class="btn btn-primary" (click)="sendOrders()" *ngIf="userIsLoggedIn  &&  languageService.language == 'NL'"> Bestellen </button>  
+        <button class="btn btn-primary" (click)="sendOrders()" *ngIf="userIsLoggedIn  &&  languageService.language == 'EN'"> Order </button> 
 
 
     </div>

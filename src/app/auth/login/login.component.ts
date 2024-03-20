@@ -4,6 +4,7 @@ import { AuthService } from '../auth.service';
 import { AuthRequest } from '../auth-request.model';
 import { AuthResponse } from '../auth-response.model';
 import { Router } from '@angular/router';
+import { LanguageService } from '../../services/language.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit{
 
   public loginForm: FormGroup; 
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router){}
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, public languageService:LanguageService){}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({

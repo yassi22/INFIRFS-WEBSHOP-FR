@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { Product } from '../models/product.model';
 import { ProductsService } from '../services/products.service';
+import { LanguageService } from '../services/language.service';
 
 @Component({
   selector: 'app-products',
@@ -13,7 +14,7 @@ export class ProductsComponent {
   public products: Product[] = new Array<Product>();
   public loadingProducts: boolean = true;
 
-  constructor(private productsService: ProductsService, private cartService: CartService) {
+  constructor(private productsService: ProductsService, private cartService: CartService, public languageService:LanguageService) {
   }
 
   ngOnInit(): void {

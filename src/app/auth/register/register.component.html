@@ -1,54 +1,65 @@
 <div class="row">
+    <h3 *ngIf="languageService.language == 'EN'"> Register</h3>  
+    <h3 *ngIf="languageService.language == 'NL'"> Registeren</h3> 
 
     <div class="col-sm-6">
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
             <div class="form-group mb-3">
-                <label for="email">Email</label>
+                <label for="email" >Email</label>
                 <input type="text" class="form-control" formControlName="email" id="email">
             </div>
             <div class="form-group mb-3">
-                <label for="password">Password</label>
+                <label for="password" *ngIf="languageService.language == 'EN'">Password</label> 
+                <label for="password" *ngIf="languageService.language == 'NL'">Wachtwoord</label>
                 <input type="password" class="form-control" formControlName="password" id="password1">
             </div>
-            <div class="form-group mb-3">
-                <label for="password2">Repeat password</label>
-                <input type="password2" class="form-control" formControlName="repeated_password" id="password2">
+            <div class="form-group mb-3"> 
+                <label for="password2" *ngIf="languageService.language == 'EN'">Repeat Password</label> 
+                <label for="password2" *ngIf="languageService.language == 'NL'">Herhaal Wachtwoord</label>
+                <input type="password" class="form-control" formControlName="repeated_password" id="password2">
             </div> 
 
             <div class="form-group mb-3">
-                <label for="voornaam">Voornaam</label>
+                <label for="voornaam" *ngIf="languageService.language == 'EN'">Firstname</label> 
+                <label for="voornaam" *ngIf="languageService.language == 'NL'">Voornaam</label>
                 <input type="text" class="form-control" formControlName="voornaam" id="voornaam">
             </div> 
 
-            <div class="form-group mb-3">
-                <label for="tussenvoegsel">Tussenvoegsel</label>
+            <div class="form-group mb-3"> 
+                <label for="tussenvoegsel" *ngIf="languageService.language == 'EN'">Infix</label> 
+                <label for="tussenvoegsel" *ngIf="languageService.language == 'NL'">Tussenvoegsel</label>
                 <input type="text" class="form-control" formControlName="tussenvoegsel" id="tussenvoegsel">
             </div>
             
             <div class="form-group mb-3">
-                <label for="achternaam">Achternaam</label>
+                <label for="achternaam" *ngIf="languageService.language == 'EN'">Lastname</label> 
+                <label for="achternaam" *ngIf="languageService.language == 'NL'">Achternaam</label>
                 <input type="text" class="form-control" formControlName="achternaam" id="achternaam">
             </div>
             
             <div class="form-group mb-3">
-                <label for="straat">Straat</label>
+                <label for="straat" *ngIf="languageService.language == 'EN'">Street</label> 
+                <label for="straat" *ngIf="languageService.language == 'NL'">Straat</label>
                 <input type="text" class="form-control" formControlName="straat" id="straat">
             </div> 
 
             <div class="form-group mb-3">
-                <label for="huisnummer">Huisnummer</label>
+                <label for="huisnummer" *ngIf="languageService.language == 'EN'">House number</label> 
+                <label for="huisnummer" *ngIf="languageService.language == 'NL'">Huisnummer</label>
                 <input type="text" class="form-control" formControlName="huisnummer" id="huisnummer">
             </div>
 
 
             <div class="form-group mb-3">
-                <label for="postcode">Postcode</label>
+                <label for="postcode" *ngIf="languageService.language == 'EN'">PostalCode</label> 
+                <label for="postcode" *ngIf="languageService.language == 'NL'">Postcode</label>
                 <input type="text" class="form-control" formControlName="postcode" id="postcode">
             </div>
 
 
-            <button type="submit" class="btn btn-md btn-dark" [disabled]="!registerForm.valid">Sign up</button>
+            <button type="submit" class="btn btn-md btn-primary" [disabled]="!registerForm.valid" *ngIf="languageService.language == 'EN'">Sign up</button> 
+            <button type="submit" class="btn btn-md btn-primary" [disabled]="!registerForm.valid" *ngIf="languageService.language == 'NL'">Registeer</button>
 
         </form>
     </div>

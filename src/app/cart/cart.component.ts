@@ -5,7 +5,8 @@ import { CartService } from '../services/cart.service';
 import { Product } from '../models/product.model'; 
 import { TokenService } from '../auth/token.service';
 import { Order } from '../models/order.model'; 
-import { ProductsService } from '../services/products.service'; 
+import { ProductsService } from '../services/products.service';  
+import { LanguageService } from '../services/language.service';
 
 
 
@@ -21,7 +22,7 @@ export class CartComponent implements OnInit {
 
   public userIsLoggedIn: boolean = false;
 
-  constructor(private cartService: CartService, private authService: AuthService, private tokenService: TokenService, private productService:ProductsService) { }
+  constructor(private cartService: CartService, private authService: AuthService, private tokenService: TokenService, private productService:ProductsService, public languageService: LanguageService) { }
 
   ngOnInit() {
     this.products_in_cart = this.cartService.allProductsInCart();

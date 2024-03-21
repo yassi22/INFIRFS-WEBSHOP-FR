@@ -1,23 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
+import { CommonModule } from '@angular/common';
 import { Product } from '../../models/product.model';
 import { ProductsService } from '../../services/products.service';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.scss'
 })
-export class ProductDetailComponent {
-  public product: Product;
-  private productId: number;
+export class ProductDetailComponent { 
+  @Input() public product!: Product;
+  @Output() public onBuyProduct: EventEmitter<Product> = new EventEmitter<Product>();
+
+   
+  private productId: number; 
+  
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private productsService: ProductsService
+    private productsService: ProductsService, 
+    public languageService: LanguageService
   ) { }
 
   ngOnInit() {
@@ -30,6 +36,10 @@ export class ProductDetailComponent {
       .subscribe((product: Product) => {
         this.product = product;
       });
+  } 
+
+  public buyProduct(product: Product) {
+    this.onBuyProduct.emit(product);
   }
 
 }

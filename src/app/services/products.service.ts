@@ -13,7 +13,7 @@ import { TokenService } from '../auth/token.service';
 })
 export class ProductsService { 
 
-  private _orderEndpoint: string = 'http://localhost:8080/api/order';
+  private _orderEndpoint: string = 'http://s1144425.student.inf-hsleiden.nl:24425/api/order';
 
   private baseUrl: string = environment.base_url + "/game";
 

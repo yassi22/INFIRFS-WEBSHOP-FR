@@ -2,7 +2,8 @@
         <div class="row d-flex justify-content-center">
           <div class="col-xl-11">
             <div class="d-flex justify-content-between align-items-center mb-4">
-              <h3 class="fw-normal mb-0 text-black">Orders</h3>
+              <h3 class="fw-normal mb-0 text-black" *ngIf="languageService.language == 'EN'">Orders</h3> 
+              <h3 class="fw-normal mb-0 text-black" *ngIf="languageService.language == 'NL'">Bestellingen</h3>
             </div>
             @for (order of orders; track $index){
              
@@ -13,10 +14,12 @@
                     <p class="lead fw-normal mb-2">{{order.orderTitle}}</p> 
                   </div>
                   <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1"> 
-                    <h5 class="mb-0"> Prijs: {{order.orderPrice}}</h5>
+                    <h5 class="mb-0"  *ngIf="languageService.language == 'NL'" > Prijs: {{order.orderPrice}}</h5> 
+                    <h5 class="mb-0"  *ngIf="languageService.language == 'EN'" > Price: {{order.orderPrice}}</h5>
                   </div> 
                   <div class="col-md-3 col-lg-3 col-xl-3">
-                    <p class="lead fw-normal mb-2"> Datum: {{order.datum}}</p> 
+                    <p class="lead fw-normal mb-2" *ngIf="languageService.language == 'NL'"> Datum: {{order.datum}}</p>   
+                    <p class="lead fw-normal mb-2" *ngIf="languageService.language == 'EN'"> Date: {{order.datum}}</p> 
                   </div>
                 </div>
               </div>

@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { Product } from '../models/product.model';
 import { ProductsService } from '../services/products.service';
-import { LanguageService } from '../services/language.service';
+import { LanguageService } from '../services/language.service'; 
 
 @Component({
   selector: 'app-products',

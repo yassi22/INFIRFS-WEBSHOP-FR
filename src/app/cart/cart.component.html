@@ -39,7 +39,10 @@
         <button class="btn btn-primary" (click)="sendOrders()" *ngIf="userIsLoggedIn  &&  languageService.language == 'NL'"> Bestellen </button>  
         <button class="btn btn-primary" (click)="sendOrders()" *ngIf="userIsLoggedIn  &&  languageService.language == 'EN'"> Order </button> 
 
+     </div>
+  </div> 
+ 
+</section> 
 
-    </div>
-  </div>
-</section>
+<p class="text-center fw-normal fs-5 pt-5" *ngIf="languageService.language == 'EN'" >Disclaimer this is a school project. You can't pay</p>
+<p class="text-center fw-normal fs-5 pt-5" *ngIf="languageService.language == 'NL'" >Disclaimer dit is een school project. Je kan niet betalen</p>

@@ -1,8 +1,16 @@
 
+<div class="container-xl"> 
+
+<div class="row justify-content-center mt-4">  
 @if (loadingProducts){
 <p>Loading products...</p>
 } @else {
-@for (product of products; track $index){
-<app-product-thumbnail [product]="product" (onBuyProduct)="onBuyProduct(product)"></app-product-thumbnail>
+@for (product of products; track $index){ 
+    <div class="col"> 
+<app-product-thumbnail [product]="product" (onBuyProduct)="onBuyProduct(product)"></app-product-thumbnail> 
+</div>
 }
 }
+
+</div>
+</div>

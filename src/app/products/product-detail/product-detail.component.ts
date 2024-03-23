@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Product } from '../../models/product.model';
 import { ProductsService } from '../../services/products.service';
 import { LanguageService } from '../../services/language.service';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -23,7 +24,8 @@ export class ProductDetailComponent {
   constructor(
     private activatedRoute: ActivatedRoute,
     private productsService: ProductsService, 
-    public languageService: LanguageService
+    public languageService: LanguageService, 
+    private cartService: CartService
   ) { }
 
   ngOnInit() {
@@ -39,7 +41,7 @@ export class ProductDetailComponent {
   } 
 
   public buyProduct(product: Product) {
-    this.onBuyProduct.emit(product);
+    this.cartService.addProductToCart(product)
   }
 
 }

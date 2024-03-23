@@ -3,11 +3,13 @@ import {Order } from '../models/order.model';
 import { OrderService } from '../services/order.service'; 
 import { ActivatedRoute } from '@angular/router'; 
 import { GetOrder } from '../models/getorder.model';
+import { LanguageService } from '../services/language.service'; 
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-order',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './order.component.html',
   styleUrl: './order.component.scss'
 })
@@ -19,7 +21,7 @@ export class OrderComponent {
 
 
 
-constructor(private OrderService: OrderService){ 
+constructor(private OrderService: OrderService, public languageService: LanguageService){ 
 
 } 
 

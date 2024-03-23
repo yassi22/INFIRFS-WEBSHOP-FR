@@ -8,7 +8,7 @@ import { ProductThumbnailComponent } from './product-thumbnail/product-thumbnail
 @NgModule({
   declarations: [
     ProductsComponent,
-    ProductThumbnailComponent
+    ProductThumbnailComponent 
   ],
   imports: [
     CommonModule,

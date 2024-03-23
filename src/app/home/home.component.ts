@@ -5,19 +5,20 @@ import { Product } from '../models/product.model';
 import { CartService } from '../services/cart.service';
 import { ProductThumbnailComponent } from '../products/product-thumbnail/product-thumbnail.component';
 import { LanguageService } from '../services/language.service';
-
+import { Router, RouterModule } from '@angular/router';
+import { ProductsModule } from '../products/products.module';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule, ProductsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
 
   public loadingProducts: boolean = true;
-  public products: Product[] = new Array<Product>(); 
+  public products: Product[] = new Array<Product>();  
 
 
 constructor(private productsService: ProductsService, private cartService: CartService, public languageService: LanguageService){ 
